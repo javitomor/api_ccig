@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+
+<head>
+  <link th:href="@{/css/bootstrap.css}" rel="stylesheet" href="../../../static/css/bootstrap.css" />
+
+  <script th:src="@{/js/jquery.js}" src="../../../static/js/jquery.js"></script>
+  <script th:src="@{/js/bootstrap.js}" src="../../../static/js/bootstrap.js"></script>
+  <script th:src="@{/js/loadMenu.js}" src="../../../static/js/loadMenu.js"></script>
+  <meta charset="utf-8">
+  <title>Carga MM</title>
+</head>
+
+<body>
+  <nav>
+    <div class="row">
+      <div class="col-3">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <a class="nav-link" onclick="cargarMenu('menu')" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="false">Home</a>
+          <a class="nav-link active" onclick="cargarMenu('ccig')" id="v-pills-ccig-tab" data-toggle="pill" href="#v-pills-ccig" role="tab" aria-controls="v-pills-ccig" aria-selected="true">CCIG</a>
+          <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
+          <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+        </div>
+      </div>
+      <div class="col-9">
+        <div class="tab-content" id="v-pills-tabContent">
+          <div class="tab-pane fade" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">...</div>
+          <div class="tab-pane fade show active" id="v-pills-ccig" role="tabpanel" aria-labelledby="v-pills-ccig-tab">
+            <section id="secFormularioCargaMM">
+              <h1>Cargar MM</h1>
+              <form>
+                <div class="col-sm-9">
+                  <div class="form-group row">
+                    <div class="col">
+                      <label class="col-sm-4 col-form-label">PRECEDENCIA</label>
+                      <div class="col-sm-12">
+                        <!-- <input type="text" class="form-control" id="inputProcedencia" placeholder="PROCEDENCIA"> -->
+                        <select id="selectProcedencia" class="custom-select">
+                          <option selected>Seleccione precedencia</option>
+                          <option value="1">RUTINA</option>
+                          <option value="2">PRIORIDAD</option>
+                          <option value="3">INMEDIATO</option>
+                          <option value="3">FLASH</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <label class="col-sm-4 col-form-label">SEGURIDAD</label>
+                      <div class="col-sm-12">
+                        <!-- <input type="text" class="form-control" id="inputProcedencia" placeholder="PROCEDENCIA"> -->
+                        <select id="selectProcedencia" class="custom-select">
+                          <option selected>Seleccione seguridad</option>
+                          <option value="2">PÚBLICO</option>
+                          <option value="3">CONFIDENCIAL</option>
+                          <option value="3">RESERVADO</option>
+                          <option value="3">SECRETO</option>
+                          <option value="3">EST SECRETO Y CONFIDENCIAL</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <label class="col-sm-4 col-form-label">GFH</label>
+                      <div class="col-sm-12">
+                        <input type="text" class="form-control" id="inputGfh" placeholder="Grupo Fecha Hora">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col">
+                      <label class="col-sm-4 col-form-label">NR</label>
+                      <div class="col-sm-12">
+                        <input type="text" class="form-control" id="inputNr" placeholder="Número de Registro">
+                      </div>
+                    </div>
+                    <div class="col">
+                      <label class="col-sm-4 col-form-label">NC</label>
+                      <div class="col-sm-12">
+                        <input type="text" class="form-control" id="inputNc" placeholder="Número de Control">
+                      </div>
+                    </div>
+                    <div class="col">
+                      <label class="col-sm-4 col-form-label">FOLIO</label>
+                      <div class="col-sm-12">
+                        <input type="text" class="form-control" id="inputFolio" placeholder="Número de Folio">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col">
+                      <label class="col-sm-4 col-form-label">PROMOTOR</label>
+                      <div class="col-sm-12">
+                        <!-- <input type="text" class="form-control" id="inputProcedencia" placeholder="PROCEDENCIA"> -->
+                        <select id="selectProcedencia" class="custom-select">
+                          <option selected>Seleccione promotor</option>
+                          <option value="2">RC15</option>
+                          <option value="3">BINGM8</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <label class="col-sm-4 col-form-label">EJECUTIVOS</label>
+                      <div class="col-sm-12">
+                        <!-- <input type="text" class="form-control" id="inputProcedencia" placeholder="PROCEDENCIA"> -->
+                        <select id="selectProcedencia" class="custom-select">
+                          <option selected>Seleccione ejecutivos</option>
+                          <option value="2">RC15</option>
+                          <option value="3">BINGM8</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <label class="col-sm-4 col-form-label">INFORMATIVOS</label>
+                      <div class="col-sm-12">
+                        <!-- <input type="text" class="form-control" id="inputProcedencia" placeholder="PROCEDENCIA"> -->
+                        <select id="selectProcedencia" class="custom-select">
+                          <option selected>Seleccione informativos</option>
+                          <option value="2">RC15</option>
+                          <option value="3">BINGM8</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- texto del mensaje -->
+                  <div class="form-group row">
+                    <div class="col">
+                      <label class="col-sm-4 col-form-label">TEXTO</label>
+                      <div class="col-sm-12">
+                        <textarea class="form-control" id="textTexto" placeholder="Texto del mensaje"></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Subir archivos -->
+                  <div class="form-group row">
+                    <div class="col">
+                      <div class="col-sm-12">
+                        <label class="custom-file-label" for="fileMM">Seleccionar Archivo</label>
+                        <input type="file" class="custom-file-input" id="fileMM" lang="es">
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- boton guardar -->
+                  <div class="form-group row">
+                    <div class="col">
+                      <button type="button" class="btn btn-danger">Voler</button>
+                    </div>
+                    <div class="col">
+                      <div class="col-sm-8">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </section>
+          </div>
+          <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
+          <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+</body>
+
+</html>

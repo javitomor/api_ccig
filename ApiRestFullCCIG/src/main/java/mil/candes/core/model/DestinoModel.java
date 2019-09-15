@@ -19,6 +19,7 @@ public class DestinoModel {
 	public DestinoModel() {
 
 	}
+	
 
 	public DestinoModel(long id, String descripcion, String correo) {
 
