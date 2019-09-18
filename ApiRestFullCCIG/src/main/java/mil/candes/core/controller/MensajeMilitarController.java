@@ -1,6 +1,5 @@
 package mil.candes.core.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -14,63 +13,70 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import mil.candes.core.configuration.Routes;
 import mil.candes.core.entity.MensajeMilitarEntity;
 import mil.candes.core.model.DestinoModel;
 import mil.candes.core.model.MensajeMilitarModel;
+import mil.candes.core.model.PrecedenciaModel;
+import mil.candes.core.model.PromotorModel;
+import mil.candes.core.model.SeguridadModel;
 import mil.candes.core.service.DestinoService;
 import mil.candes.core.service.MensajeMilitarService;
 
 @RestController
 //@RequestMapping(Pages.rootRoute)
 @RequestMapping(Routes.api)
-public class MensajeMilitarController {
+public class MensajeMilitarController{
 
 	@Autowired
 	@Qualifier("mensajeMilitarService")
 	MensajeMilitarService service;
 	
-	@Autowired
-	DestinoService destinoService;
-	
-	@PutMapping("/mm")
+	@PutMapping(path="/mm")
 	public boolean agregarMensajeMilitar(@RequestBody @Valid MensajeMilitarEntity mensaje) {
 		return service.crearMM(mensaje);
 	}
 	
-	@PostMapping("/mm")
+	@PostMapping(path="/mm")
 	public boolean actualizarMensajeMilitar(@RequestBody @Valid MensajeMilitarEntity mensaje) {
 		return service.actualizarMM(mensaje);
 	}
 	
-	@DeleteMapping("/mm/{id}")
+	@DeleteMapping(path="/mm/{id}")
 		public boolean borrarMM(@PathVariable("id") long id) {
 			return service.borrarMM(id);
 		}
-	@GetMapping(Routes.mm)
+	@GetMapping(path=Routes.mm)
 	public List<MensajeMilitarModel> obtenerMM(){
 		return service.obtenerMM();
 	}
 	
-	@GetMapping(Routes.datosFormularioCargaMM)
-	public List<Object> obtenerDatosCargaMM() {
-		
-		List<Object> datos = new ArrayList<>();
-		datos.add(service.getDestinos());//obtengo los datos de los destinos
-		datos.add(service.getPrecedencias());
-		datos.add(service.getPromotores());
-		datos.add(service.getSeguridades());
-		
-//		service.getDestinos();
-		
-		
-		
-		return datos;
+	
+	@GetMapping(path=Routes.destinos) // api/datoscarga/destinos
+	@ResponseBody
+	public List<DestinoModel> obtenerDestinos() {
+		return service.getDestinos(); 
 	}
-//	@GetMapping("/mm")
-//	public ModelAndView obtenerMM() {
-//		return new ModelAndView("ccig/mm/index");
-//	}
+	
+	@GetMapping(path=Routes.precedencias) // api/datoscarga/precedencias
+	@ResponseBody
+	public List<PrecedenciaModel> obtenerPrecedencias(){
+		return service.getPrecedencias();
+	}
+	
+	@GetMapping(path=Routes.promotores)
+	@ResponseBody
+	public List<PromotorModel> obtenerPromotores(){
+		return service.getPromotores();
+	}
+	
+	@GetMapping(path=Routes.seguridades)
+	@ResponseBody
+	public List<SeguridadModel> obtenerSeguridades(){
+		return service.getSeguridades();
+	}
+
 }
