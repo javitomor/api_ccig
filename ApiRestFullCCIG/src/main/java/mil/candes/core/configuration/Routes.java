@@ -14,6 +14,7 @@ public class Routes {
 	public final static String precedencias = datosFormularioCargaMM + "/precedencias";
 	public final static String promotores = datosFormularioCargaMM + "/promotores";
 	public final static String seguridades = datosFormularioCargaMM + "/seguridades";
+	public final static String guardarMM= mm+"/guardar";
 
 	public final static String login = "/login";
 
