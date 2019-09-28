@@ -10,5 +10,6 @@ import mil.candes.core.entity.DestinoEntity;
 @Repository("destinoRepositorio")
 public interface DestinosRepository extends JpaRepository<DestinoEntity, Serializable> {
 
+	public abstract DestinoEntity findById(long id);
 //	public abstract List<DestinoEntity> findAll();
 }

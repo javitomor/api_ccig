@@ -21,5 +21,9 @@ public class PrecedenciaConverter {
 		
 		return precedenciasModel;
 	}
+	
+	public PrecedenciaModel convertirAModel(PrecedenciaEntity precedenciaEntity) {
+		return new PrecedenciaModel(precedenciaEntity);
+	}
 
 }

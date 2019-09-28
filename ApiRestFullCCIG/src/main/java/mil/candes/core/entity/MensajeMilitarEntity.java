@@ -2,6 +2,7 @@ package mil.candes.core.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -58,26 +59,26 @@ public class MensajeMilitarEntity implements Serializable {
 	@JoinTable(name="MM_EJECUTIVO",
 	joinColumns = @JoinColumn(name="ID_MM"),
 	inverseJoinColumns = @JoinColumn(name="ID_EJECUTIVO"))
-	private Set<DestinoEntity> ejecutivo;
+	private List<DestinoEntity> ejecutivo;
 	
 	@ManyToMany
 	@JoinTable(name="MM_INFORMATIVO",
 	joinColumns = @JoinColumn(name="ID_MM"),
 	inverseJoinColumns = @JoinColumn(name="ID_INFORMATIVO"))
-	private Set<DestinoEntity> informativo;
+	private List<DestinoEntity> informativo;
 	
 	@ManyToMany
 	@JoinTable(name="MM_ESTADO",
 	joinColumns = @JoinColumn(name="ID_MM"),
 	inverseJoinColumns = @JoinColumn(name="ID_ESTADO_MM"))
-	private Set<EstadoMMEntity> estado;
+	private List<EstadoMMEntity> estado;
 	
 	public MensajeMilitarEntity() {
 		
 	}
 	public MensajeMilitarEntity(long id, long numeroRegistro, long numeroControl, long numeroFolio,
 			String grupoFechaHora, String texto, LocalDate fechaAlta, PrecedenciaEntity precedencia, SeguridadEntity seguridad,
-			PromotorEntity promotor, Set<DestinoEntity> ejecutivo, Set<DestinoEntity> informativo) {
+			PromotorEntity promotor, List<DestinoEntity> ejecutivo, List<DestinoEntity> informativo) {
 		this.id = id;
 		this.numeroRegistro = numeroRegistro;
 		this.numeroControl = numeroControl;
@@ -151,16 +152,16 @@ public class MensajeMilitarEntity implements Serializable {
 	public void setPromotor(PromotorEntity promotor) {
 		this.promotor = promotor;
 	}
-	public Set<DestinoEntity> getEjecutivo() {
+	public List<DestinoEntity> getEjecutivo() {
 		return ejecutivo;
 	}
-	public void setEjecutivo(Set<DestinoEntity> ejecutivo) {
+	public void setEjecutivo(List<DestinoEntity> ejecutivo) {
 		this.ejecutivo = ejecutivo;
 	}
-	public Set<DestinoEntity> getInformativo() {
+	public List<DestinoEntity> getInformativo() {
 		return informativo;
 	}
-	public void setInformativo(Set<DestinoEntity> informativo) {
+	public void setInformativo(List<DestinoEntity> informativo) {
 		this.informativo = informativo;
 	}
 	

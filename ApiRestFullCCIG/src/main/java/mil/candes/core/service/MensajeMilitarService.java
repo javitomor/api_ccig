@@ -4,13 +4,18 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import mil.candes.core.converter.MensajeMilitarConverter;
+import mil.candes.core.entity.DestinoEntity;
 import mil.candes.core.entity.MensajeMilitarEntity;
+import mil.candes.core.entity.PrecedenciaEntity;
+import mil.candes.core.entity.PromotorEntity;
+import mil.candes.core.entity.SeguridadEntity;
 import mil.candes.core.model.DestinoModel;
 import mil.candes.core.model.MensajeMilitarModel;
 import mil.candes.core.model.PrecedenciaModel;
@@ -46,7 +51,6 @@ public class MensajeMilitarService {
 
 	public boolean crearMM(MensajeMilitarEntity mmEntity) {
 		try {
-//			logger.info("Creando MM");
 			repositorio.save(mmEntity);
 			return true;
 		} catch (Exception e) {
@@ -103,16 +107,40 @@ public class MensajeMilitarService {
 		return destinoService.getAll();
 	}
 	
+	public DestinoEntity getDestinoEntity(long id) {
+		return destinoService.getDestinoEntity(id);
+	}
+	
 	public List<PrecedenciaModel> getPrecedencias(){
 		return precedenciaService.getAll();
+	}
+	
+	public PrecedenciaEntity getPrecedenciaEntity(long id) {
+		return precedenciaService.getPredecedenciaEntity(id);
 	}
 	
 	public List<PromotorModel> getPromotores(){
 		return promotorService.getAll();
 	}
 	
+	public PromotorEntity getPromotorEntity(long id) {
+		return promotorService.getPromotorEntity(id);
+	}
+	
 	public List<SeguridadModel> getSeguridades(){
 		return seguridadService.getAll();
+	}
+	
+	public SeguridadEntity getSeguridadEntity(long id) {
+		return seguridadService.getSeguridadEntity(id);
+	}
+	
+	public MensajeMilitarModel convertirJsonAMensaje(JSONObject mmil) {
+		return convertidor.convertirJsonAMensaje(mmil);
+	}
+	
+	public MensajeMilitarEntity convertirModelAEntity(MensajeMilitarModel mensajeModel) {
+		return convertidor.convertirModelAEntity(mensajeModel);
 	}
 
 }

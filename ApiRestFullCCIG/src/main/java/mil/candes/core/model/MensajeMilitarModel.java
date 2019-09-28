@@ -1,6 +1,7 @@
 package mil.candes.core.model;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 
 import mil.candes.core.entity.DestinoEntity;
@@ -22,8 +23,8 @@ public class MensajeMilitarModel {
 	private PrecedenciaEntity precedencia;
 	private SeguridadEntity seguridad;
 	private PromotorEntity promotor;
-	private Set<DestinoEntity> ejecutivo;
-	private Set<DestinoEntity> informativo;
+	private List<DestinoEntity> ejecutivo;
+	private List<DestinoEntity> informativo;
 	
 	
 	
@@ -48,7 +49,7 @@ public class MensajeMilitarModel {
 	
 	public MensajeMilitarModel(long id, long numeroRegistro, long numeroControl, long numeroFolio,
 			String grupoFechaHora, String texto, LocalDate fechaAlta, PrecedenciaEntity precedencia,
-			SeguridadEntity seguridad, PromotorEntity promotor, Set<DestinoEntity> ejecutivo, Set<DestinoEntity> informativo) {
+			SeguridadEntity seguridad, PromotorEntity promotor, List<DestinoEntity> ejecutivo, List<DestinoEntity> informativo) {
 		this.id = id;
 		this.numeroRegistro = numeroRegistro;
 		this.numeroControl = numeroControl;
@@ -122,16 +123,16 @@ public class MensajeMilitarModel {
 	public void setPromotor(PromotorEntity promotor) {
 		this.promotor = promotor;
 	}
-	public Set<DestinoEntity> getEjecutivo() {
+	public List<DestinoEntity> getEjecutivo() {
 		return ejecutivo;
 	}
-	public void setEjecutivo(Set<DestinoEntity> ejecutivo) {
+	public void setEjecutivo(List<DestinoEntity> ejecutivo) {
 		this.ejecutivo = ejecutivo;
 	}
-	public Set<DestinoEntity> getInformativo() {
+	public List<DestinoEntity> getInformativo() {
 		return informativo;
 	}
-	public void setInformativo(Set<DestinoEntity> informativo) {
+	public void setInformativo(List<DestinoEntity> informativo) {
 		this.informativo = informativo;
 	}
 	

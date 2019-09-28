@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import mil.candes.core.converter.SeguridadConverter;
+import mil.candes.core.entity.SeguridadEntity;
 import mil.candes.core.model.SeguridadModel;
 import mil.candes.core.repository.SeguridadRepository;
 
@@ -14,12 +15,16 @@ import mil.candes.core.repository.SeguridadRepository;
 public class SeguridadService {
 
 	@Autowired
-	SeguridadRepository respositorio;
+	SeguridadRepository repositorio;
 	
 	@Autowired
 	SeguridadConverter converter;
 	
 	public List<SeguridadModel> getAll(){
-		return converter.convertirListaSeguridad(respositorio.findAll());
+		return converter.convertirListaSeguridad(repositorio.findAll());
+	}
+	
+	public SeguridadEntity getSeguridadEntity(long id) {
+		return repositorio.findById(id);
 	}
 }

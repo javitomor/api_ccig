@@ -9,5 +9,7 @@ import mil.candes.core.entity.PrecedenciaEntity;
 
 @Repository("precedenciaRepository")
 public interface PrecedenciaRepository extends JpaRepository<PrecedenciaEntity, Serializable>{
+	
+	public abstract PrecedenciaEntity findById(long id);
 
 }

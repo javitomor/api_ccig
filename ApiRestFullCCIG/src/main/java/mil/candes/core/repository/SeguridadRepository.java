@@ -9,5 +9,7 @@ import mil.candes.core.entity.SeguridadEntity;
 
 @Repository("seguridadRepositorio")
 public interface SeguridadRepository extends JpaRepository<SeguridadEntity, Serializable>{
+	
+	public abstract SeguridadEntity findById(long id);
 
 }

@@ -9,5 +9,7 @@ import mil.candes.core.entity.PromotorEntity;
 
 @Repository("promotorRepositorio")
 public interface PromotorRepository extends JpaRepository<PromotorEntity, Serializable>{
+	
+	public abstract PromotorEntity findById(long id);
 
 }
