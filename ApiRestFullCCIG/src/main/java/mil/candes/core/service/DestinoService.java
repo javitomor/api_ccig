@@ -1,5 +1,6 @@
 package mil.candes.core.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,18 @@ public class DestinoService {
 	
 	public DestinoEntity getDestinoEntity(long id) {
 		return repositorio.findById(id);
+	}
+	
+	public DestinoModel getDestinoModel(String descripcion) {
+		return converter.convertirEntityToModel(repositorio.findByDescripcion(descripcion));
+	}
+	
+	public List<DestinoModel> getTodosDestinosModel(String arrayJson){
+		return new ArrayList<DestinoModel>();
+	}
+	
+	public DestinoModel getDestinoModel(long id) {
+		return converter.convertirEntityToModel(repositorio.findById(id));
 	}
 
 }

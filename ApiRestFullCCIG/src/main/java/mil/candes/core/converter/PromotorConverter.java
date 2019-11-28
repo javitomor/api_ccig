@@ -19,5 +19,10 @@ public class PromotorConverter {
 		}
 		return promotoresModel;
 	}
+	
+	public PromotorModel convertirEntityToModel(PromotorEntity entidad) {
+		System.out.println(entidad.getId());
+		return new PromotorModel(entidad);
+	}
 
 }

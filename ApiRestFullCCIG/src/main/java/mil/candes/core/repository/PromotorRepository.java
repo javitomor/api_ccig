@@ -11,5 +11,7 @@ import mil.candes.core.entity.PromotorEntity;
 public interface PromotorRepository extends JpaRepository<PromotorEntity, Serializable>{
 	
 	public abstract PromotorEntity findById(long id);
+	
+	public abstract PromotorEntity findByDescripcion(String descripcion);
 
 }

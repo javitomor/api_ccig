@@ -27,5 +27,15 @@ public class PromotorService {
 	public PromotorEntity getPromotorEntity(long id) {
 		return repositorio.findById(id);
 	}
+	
+	public PromotorModel getPromotorModel(String descripcion){
+		System.out.println(descripcion);
+		System.out.println(repositorio.findByDescripcion(descripcion));
+		return converter.convertirEntityToModel(repositorio.findByDescripcion(descripcion));
+	}
+	
+	public PromotorModel getPromotorModel(long id) {
+		return new PromotorModel(getPromotorEntity(id));
+	}
 
 }

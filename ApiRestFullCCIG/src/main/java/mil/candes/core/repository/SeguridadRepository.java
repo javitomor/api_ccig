@@ -11,5 +11,6 @@ import mil.candes.core.entity.SeguridadEntity;
 public interface SeguridadRepository extends JpaRepository<SeguridadEntity, Serializable>{
 	
 	public abstract SeguridadEntity findById(long id);
+	public abstract SeguridadEntity findByDescripcion(String descripcion);
 
 }

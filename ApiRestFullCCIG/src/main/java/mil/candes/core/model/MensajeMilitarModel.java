@@ -1,14 +1,10 @@
 package mil.candes.core.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-
 import mil.candes.core.entity.DestinoEntity;
 import mil.candes.core.entity.MensajeMilitarEntity;
-import mil.candes.core.entity.PrecedenciaEntity;
-import mil.candes.core.entity.PromotorEntity;
-import mil.candes.core.entity.SeguridadEntity;
 
 public class MensajeMilitarModel {
 
@@ -19,15 +15,14 @@ public class MensajeMilitarModel {
 	private String grupoFechaHora;
 	private String texto;
 	private LocalDate fechaAlta;
-	
-	private PrecedenciaEntity precedencia;
-	private SeguridadEntity seguridad;
-	private PromotorEntity promotor;
-	private List<DestinoEntity> ejecutivo;
-	private List<DestinoEntity> informativo;
-	
-	
-	
+	private String archivo;
+
+	private PrecedenciaModel precedencia;
+	private SeguridadModel seguridad;
+	private PromotorModel promotor;
+	private List<DestinoModel> ejecutivo;
+	private List<DestinoModel> informativo;
+
 	public MensajeMilitarModel(MensajeMilitarEntity mmEntity) {
 		this.id = mmEntity.getId();
 		this.numeroRegistro = mmEntity.getNumeroRegistro();
@@ -36,20 +31,22 @@ public class MensajeMilitarModel {
 		this.grupoFechaHora = mmEntity.getGrupoFechaHora();
 		this.texto = mmEntity.getTexto();
 		this.fechaAlta = mmEntity.getFechaAlta();
-		this.precedencia = mmEntity.getPrecedencia();
-		this.seguridad = mmEntity.getSeguridad();
-		this.promotor = mmEntity.getPromotor();
-		this.ejecutivo = mmEntity.getEjecutivo();
-		this.informativo = mmEntity.getInformativo();
+		this.precedencia = new PrecedenciaModel(mmEntity.getPrecedencia());
+		this.seguridad = new SeguridadModel(mmEntity.getSeguridad());
+		this.promotor = new PromotorModel(mmEntity.getPromotor());
+		this.ejecutivo = getDestinosModelos(mmEntity.getEjecutivo());
+		this.informativo = getDestinosModelos(mmEntity.getInformativo());
+		this.archivo = mmEntity.getArchivo();
 	}
 
 	public MensajeMilitarModel() {
-		
+
 	}
-	
+
 	public MensajeMilitarModel(long id, long numeroRegistro, long numeroControl, long numeroFolio,
-			String grupoFechaHora, String texto, LocalDate fechaAlta, PrecedenciaEntity precedencia,
-			SeguridadEntity seguridad, PromotorEntity promotor, List<DestinoEntity> ejecutivo, List<DestinoEntity> informativo) {
+			String grupoFechaHora, String texto, LocalDate fechaAlta, String archivo, PrecedenciaModel precedencia,
+			SeguridadModel seguridad, PromotorModel promotor, List<DestinoModel> ejecutivo,
+			List<DestinoModel> informativo) {
 		this.id = id;
 		this.numeroRegistro = numeroRegistro;
 		this.numeroControl = numeroControl;
@@ -57,84 +54,124 @@ public class MensajeMilitarModel {
 		this.grupoFechaHora = grupoFechaHora;
 		this.texto = texto;
 		this.fechaAlta = fechaAlta;
+		this.archivo = archivo;
 		this.precedencia = precedencia;
 		this.seguridad = seguridad;
 		this.promotor = promotor;
 		this.ejecutivo = ejecutivo;
 		this.informativo = informativo;
 	}
+
 	public long getId() {
 		return id;
 	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
+
 	public long getNumeroRegistro() {
 		return numeroRegistro;
 	}
+
 	public void setNumeroRegistro(long numeroRegistro) {
 		this.numeroRegistro = numeroRegistro;
 	}
+
 	public long getNumeroControl() {
 		return numeroControl;
 	}
+
 	public void setNumeroControl(long numeroControl) {
 		this.numeroControl = numeroControl;
 	}
+
 	public long getNumeroFolio() {
 		return numeroFolio;
 	}
+
 	public void setNumeroFolio(long numeroFolio) {
 		this.numeroFolio = numeroFolio;
 	}
+
 	public String getGrupoFechaHora() {
 		return grupoFechaHora;
 	}
+
 	public void setGrupoFechaHora(String grupoFechaHora) {
 		this.grupoFechaHora = grupoFechaHora;
 	}
+
 	public String getTexto() {
 		return texto;
 	}
+
 	public void setTexto(String texto) {
 		this.texto = texto;
 	}
+
 	public LocalDate getFechaAlta() {
 		return fechaAlta;
 	}
+
 	public void setFechaAlta(LocalDate fechaAlta) {
 		this.fechaAlta = fechaAlta;
 	}
-	public PrecedenciaEntity getPrecedencia() {
+
+	public PrecedenciaModel getPrecedencia() {
 		return precedencia;
 	}
-	public void setPrecedencia(PrecedenciaEntity precedencia) {
+
+	public void setPrecedencia(PrecedenciaModel precedencia) {
 		this.precedencia = precedencia;
 	}
-	public SeguridadEntity getSeguridad() {
+
+	public SeguridadModel getSeguridad() {
 		return seguridad;
 	}
-	public void setSeguridad(SeguridadEntity seguridad) {
+
+	public void setSeguridad(SeguridadModel seguridad) {
 		this.seguridad = seguridad;
 	}
-	public PromotorEntity getPromotor() {
+
+	public PromotorModel getPromotor() {
 		return promotor;
 	}
-	public void setPromotor(PromotorEntity promotor) {
+
+	public void setPromotor(PromotorModel promotor) {
 		this.promotor = promotor;
 	}
-	public List<DestinoEntity> getEjecutivo() {
+
+	public List<DestinoModel> getEjecutivo() {
 		return ejecutivo;
 	}
-	public void setEjecutivo(List<DestinoEntity> ejecutivo) {
+
+	public void setEjecutivo(List<DestinoModel> ejecutivo) {
 		this.ejecutivo = ejecutivo;
 	}
-	public List<DestinoEntity> getInformativo() {
+
+	public List<DestinoModel> getInformativo() {
 		return informativo;
 	}
-	public void setInformativo(List<DestinoEntity> informativo) {
+
+	public void setInformativo(List<DestinoModel> informativo) {
 		this.informativo = informativo;
 	}
-	
-	
+
+	public String getArchivo() {
+		return archivo;
+	}
+
+	public void setArchivo(String archivo) {
+		this.archivo = archivo;
+	}
+
+	private List<DestinoModel> getDestinosModelos(List<DestinoEntity> destinosEntidades) {
+		List<DestinoModel> destinosModel = new ArrayList<DestinoModel>();
+		for (DestinoEntity destinoEntidad : destinosEntidades) {
+			destinosModel.add(new DestinoModel(destinoEntidad));
+		}
+		return destinosModel;
+	}
+
 }

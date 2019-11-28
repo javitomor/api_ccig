@@ -11,5 +11,6 @@ import mil.candes.core.entity.PrecedenciaEntity;
 public interface PrecedenciaRepository extends JpaRepository<PrecedenciaEntity, Serializable>{
 	
 	public abstract PrecedenciaEntity findById(long id);
+	public abstract PrecedenciaEntity findByDescripcion(String descripcion);
 
 }

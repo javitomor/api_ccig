@@ -20,4 +20,8 @@ public class DestinosConverter {
 			return destinosModels;
 		}
 	
+	public DestinoModel convertirEntityToModel(DestinoEntity entidad) {
+		return new DestinoModel(entidad);
+	}
+	
 }

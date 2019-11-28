@@ -15,6 +15,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.web.multipart.MultipartFile;
+
+import mil.candes.core.model.SeguridadModel;
+import mil.candes.core.service.MensajeMilitarService;
+
 @Table(name="mensajesMilitares")
 @Entity
 
@@ -42,6 +47,9 @@ public class MensajeMilitarEntity implements Serializable {
 	
 	@Column(name="FECHA_ALTA")
 	private LocalDate fechaAlta;
+	
+	@Column(name="ARCHIVO")
+	private String archivo;
 	
 	@OneToOne
 	@JoinColumn(name="ID_PRECEDENCIA")
@@ -73,12 +81,15 @@ public class MensajeMilitarEntity implements Serializable {
 	inverseJoinColumns = @JoinColumn(name="ID_ESTADO_MM"))
 	private List<EstadoMMEntity> estado;
 	
+	
 	public MensajeMilitarEntity() {
 		
 	}
+	
 	public MensajeMilitarEntity(long id, long numeroRegistro, long numeroControl, long numeroFolio,
-			String grupoFechaHora, String texto, LocalDate fechaAlta, PrecedenciaEntity precedencia, SeguridadEntity seguridad,
-			PromotorEntity promotor, List<DestinoEntity> ejecutivo, List<DestinoEntity> informativo) {
+			String grupoFechaHora, String texto, LocalDate fechaAlta, String archivo,
+			PrecedenciaEntity precedencia, SeguridadEntity seguridad, PromotorEntity promotor,
+			List<DestinoEntity> ejecutivo, List<DestinoEntity> informativo, List<EstadoMMEntity> estado) {
 		this.id = id;
 		this.numeroRegistro = numeroRegistro;
 		this.numeroControl = numeroControl;
@@ -86,12 +97,15 @@ public class MensajeMilitarEntity implements Serializable {
 		this.grupoFechaHora = grupoFechaHora;
 		this.texto = texto;
 		this.fechaAlta = fechaAlta;
+		this.archivo = archivo;
 		this.precedencia = precedencia;
 		this.seguridad = seguridad;
 		this.promotor = promotor;
 		this.ejecutivo = ejecutivo;
 		this.informativo = informativo;
+		this.estado = estado;
 	}
+
 	public long getId() {
 		return id;
 	}
@@ -164,8 +178,24 @@ public class MensajeMilitarEntity implements Serializable {
 	public void setInformativo(List<DestinoEntity> informativo) {
 		this.informativo = informativo;
 	}
+
+	public String getArchivo() {
+		return archivo;
+	}
+
+	public void setArchivo(String archivo) {
+		this.archivo = archivo;
+	}
+
+	public List<EstadoMMEntity> getEstado() {
+		return estado;
+	}
+
+	public void setEstado(List<EstadoMMEntity> estado) {
+		this.estado = estado;
+	}
 	
-	
+
 	
 	
 }

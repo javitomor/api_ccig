@@ -30,4 +30,8 @@ public class PrecedenciaService {
 	public PrecedenciaEntity getPredecedenciaEntity(long id) {
 		return repositorio.findById(id);
 	}
+	
+	public PrecedenciaModel getPrecedenciaModelPorDescripcion(String descripcion) {
+		return new PrecedenciaModel(repositorio.findByDescripcion(descripcion));
+	}
 }

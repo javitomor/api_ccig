@@ -12,4 +12,5 @@ public interface DestinosRepository extends JpaRepository<DestinoEntity, Seriali
 
 	public abstract DestinoEntity findById(long id);
 //	public abstract List<DestinoEntity> findAll();
+	public abstract DestinoEntity findByDescripcion(String descripcion);
 }
